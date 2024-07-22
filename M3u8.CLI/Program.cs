@@ -198,6 +198,11 @@ downloadCommand.SetHandler(async (downloadArg) =>
 }, downloadArg);
 rootCommand.AddCommand(downloadCommand);
 
+// open 命令
+var openCommand = new Command("open", "打开下载目录");
+openCommand.SetHandler(() => Process.Start("explorer", App.DownloadPath));
+rootCommand.AddCommand(openCommand);
+
 return await rootCommand.InvokeAsync(args);
 
 static ProcessStartInfo GetPSI(Data data)
